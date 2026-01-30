@@ -16,6 +16,7 @@ app-idia-lab에서 채택(adopted)된 PRD 문서를 기반으로, React Native +
 - **app-idia-lab 경로**: `C:\Users\lsy\app-idia-lab`
 - **PRD 파일 위치**: `C:\Users\lsy\app-idia-lab\ideas\adopted\NNN-*-prd.md`
 - **프로젝트 생성 기본 경로**: `C:\Users\lsy\`
+- **커맨드 템플릿 경로**: `C:\Users\lsy\project-init\templates\commands\`
 
 ---
 
@@ -51,6 +52,10 @@ Expo Router 기반 React Native + Supabase 프로젝트의 기본 구조. init-s
 │   ├── types/                 # TypeScript 타입 정의
 │   ├── constants/             # 상수 (색상, 크기, 설정값 등)
 │   └── assets/                # 이미지, 폰트 등 정적 리소스
+├── .claude/
+│   └── commands/              # Claude Code 커스텀 명령어 (next, plan)
+├── docs/
+│   └── plans/                 # 구현 계획 문서 (/plan 명령어 산출물)
 ├── supabase/
 │   ├── migrations/            # DB 마이그레이션 SQL 파일
 │   └── functions/             # Supabase Edge Functions
@@ -196,6 +201,17 @@ init-docs 스킬이 새 프로젝트에 생성하는 CLAUDE.md의 구조. 각 �
 ← 표준 폴더 구조 + PRD Section 5, 8 기반으로 기능별 폴더 확장.
 실제 생성된 폴더 트리를 기록.
 
+## 워크플로우
+
+| 단계 | 행동 | 비고 |
+|---|---|---|
+| 1 | 다음 태스크 확인 | `/next` 또는 Task Master 직접 조회 |
+| 2 | 계획 수립 (복잡한 작업 시) | `/plan [기능명]` |
+| 3 | 외부 라이브러리 문서 조회 | Context7 활용 |
+| 4 | 구현 | — |
+| 5 | 검증 | lint + typecheck |
+| 6 | 태스크 완료 처리 | Task Master 상태 업데이트 |
+
 ## 코딩 컨벤션
 
 ### 네이밍 규칙
@@ -221,6 +237,57 @@ Zustand 스토어 목록, 각 스토어의 역할과 주요 상태 필드.
 - Supabase 호출: try-catch + 에러 타입 분기
 - 사용자 대면 에러: Toast/Snackbar로 표시
 - 네트워크 에러: 오프라인 큐에 적재 (해당 시)
+
+## 검증 프로토콜
+
+> **적용 범위**: 코드 변경이 포함된 모든 작업
+> **제외**: 질문 응답, 파일 조회, 정보 검색만 하는 경우
+
+### 사전 검사 (구현 전)
+
+**체크리스트**
+- [ ] 관련 코드를 모두 읽었는가?
+- [ ] 기존 패턴을 이해했는가?
+- [ ] 부작용 범위를 파악했는가?
+- [ ] `KNOWLEDGE.md`에서 유사 사례 확인했는가?
+
+**신뢰도 평가**
+
+| 신뢰도 | 행동 |
+|---|---|
+| ≥90% | 바로 진행 |
+| 70-89% | 대안 제시 후 조사 계속 |
+| <70% | 중단, 사용자에게 질문 |
+
+### 사후 검증 (구현 후)
+
+**필수**: lint + typecheck 실행
+
+**위험도별 추가 검증**:
+
+| 위험도 | 조건 | 추가 검증 |
+|---|---|---|
+| 기본 | 모든 변경 | lint + typecheck |
+| 중간 | UI 변경 | + 접근성 확인 |
+| 높음 | 핵심 로직 | + 실제 기기 테스트 |
+
+**완료 전 체크리스트**:
+- [ ] typecheck 성공 (실제 출력 확인)
+- [ ] 모든 요구사항 충족 (항목별 체크)
+- [ ] 검증되지 않은 가정 없음
+- [ ] `KNOWLEDGE.md` 업데이트 필요 여부 검토
+
+### 환각 위험 신호
+
+즉시 재검토 필요:
+- 증거 없이 "정상 작동" 주장
+- "아마도", "대부분" 같은 불확실한 언어
+- 테스트 실패 무시
+- 요약만 제공, 실제 출력 생략
+
+### 커밋 규칙
+- 메시지: 한국어
+- 형식: `type: 설명` (feat, fix, refactor, docs, test 등)
 
 ## DB 규칙
 ← PRD Section 7-5에서 추출.
@@ -248,6 +315,19 @@ Zustand 스토어 목록, 각 스토어의 역할과 주요 상태 필드.
 - `npx supabase start` — 로컬 Supabase 시작
 - `npx supabase db push` — 마이그레이션 적용
 - `npx supabase functions serve` — Edge Function 로컬 실행
+
+## Tooling
+
+| 도구 | SSOT | 사용 정책 |
+|---|---|---|
+| Task Master | `.taskmaster/` | 태스크 관리 SSOT |
+| Context7 | (런타임 조회) | 외부 라이브러리 문서 조회 시 Claude 판단에 따라 사용 |
+
+## Safety (절대 규칙)
+- `.env`/비밀키/API키: 읽거나 출력 금지
+- 파괴적 명령: 실행 전 롤백 방안 제시 필수
+- 대규모 리팩터링: 임의 제안 금지
+- 외부 API 키: 서버/Edge Function에서만 사용, 클라이언트 번들 노출 금지
 
 ## 제약사항
 ← PRD Section 12에서 추출.

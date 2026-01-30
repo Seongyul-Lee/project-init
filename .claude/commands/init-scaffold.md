@@ -48,6 +48,8 @@
 - 프로젝트 루트: `C:\Users\lsy\[프로젝트명]`
 - CLAUDE.md의 "표준 폴더 구조"를 참조하여 아래 디렉토리를 생성한다:
   ```
+  .claude/commands/
+  docs/plans/
   src/app/(auth)/
   src/app/(tabs)/
   src/components/ui/
@@ -98,6 +100,9 @@
   .env
   .env.local
   ```
+- **커스텀 명령어 복사**: `C:\Users\lsy\project-init\templates\commands\` 디렉토리의 파일을 프로젝트의 `.claude\commands\`로 복사한다.
+  - `next.md` — Task Master 다음 작업 조회
+  - `plan.md` — Plan Mode 진입 + 구현 계획 문서 생성
 
 ### 7단계: 의존성 설치
 - 프로젝트 루트에서 실행한다: `C:\Users\lsy\[프로젝트명]`
@@ -128,6 +133,7 @@
 📦 공통 의존성: [설치된 패키지 수]개
 📦 조건부 의존성: [설치된 패키지 목록 또는 "없음"]
 📂 생성된 폴더: [폴더 목록]
+📋 커스텀 명령어: next.md, plan.md
 
 👉 다음 단계: /init-docs [NNN-아이디어명] [프로젝트명]
 ```
