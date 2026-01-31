@@ -20,7 +20,7 @@
 
 ### 2단계: PRD 읽기 (Section 7-1만)
 - PRD 파일을 찾는다:
-  - 경로: `C:\Users\lsy\app-idia-lab\ideas\adopted\`
+  - 경로: `C:\Users\lsy\app-idea-lab\ideas\adopted\`
   - 파일명 패턴: `NNN-*-prd.md` (예: `001-데일리셀프-prd.md`)
   - 해당 패턴의 파일이 없으면 사용자에게 정확한 파일명을 확인하고 중단한다.
 - PRD 파일에서 **Section 7-1 (기술 스택)만** 읽는다.

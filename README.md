@@ -4,7 +4,7 @@ PRD 문서를 기반으로 React Native + Supabase 프로젝트를 자동 생성
 
 ## 개요
 
-[app-idia-lab](https://github.com/Seongyul-Lee/app-idia-lab)에서 채택(adopted)된 PRD 문서를 입력받아, 표준화된 Expo + Supabase 프로젝트 구조를 자동으로 스캐폴딩한다.
+[app-idea-lab](https://github.com/Seongyul-Lee/app-idea-lab)에서 채택(adopted)된 PRD 문서를 입력받아, 표준화된 Expo + Supabase 프로젝트 구조를 자동으로 스캐폴딩한다.
 
 이 프로젝트는 **코드 개발을 하지 않는다.** PRD 기반 프로젝트 초기화 자동화 스킬만 제공한다.
 

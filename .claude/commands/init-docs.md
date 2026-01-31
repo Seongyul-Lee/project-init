@@ -22,7 +22,7 @@
 
 ### 2단계: PRD 읽기 (선별 섹션)
 - PRD 파일을 찾는다:
-  - 경로: `C:\Users\lsy\app-idia-lab\ideas\adopted\`
+  - 경로: `C:\Users\lsy\app-idea-lab\ideas\adopted\`
   - 파일명 패턴: `NNN-*-prd.md` (예: `001-데일리셀프-prd.md`)
   - 해당 패턴의 파일이 없으면 사용자에게 정확한 파일명을 확인하고 중단한다.
 - **아래 섹션만 순서대로 읽는다.** PRD 전체를 읽지 않는다.
@@ -33,12 +33,19 @@
 | 2 | Section 2 (Problem Statement) | — | 비즈니스 컨텍스트 |
 | 3 | Section 3 (Target Users & Personas) | — | 타겟 사용자 |
 | 4 | Section 5 (Functional Requirements) | 프로젝트 구조 확장 참고 | 핵심 기능 요약 |
-| 5 | Section 7 전체 (Technical Architecture) | 기술 스택, DB 규칙, API 규칙, 오프라인/동기화, 상태 관리 | — |
+| 5-a | Section 7-1 (기술 스택) | 기술 스택 | — |
+| 5-b | Section 7-3 (오프라인 우선 설계) | 오프라인/동기화 규칙 | — |
+| 5-c | Section 7-4 (핵심 설계 원칙) | 설계 원칙 | — |
+| 5-d | Section 7-5 (DB 스키마) | DB 규칙 | — |
+| 5-e | Section 7-6 (API 설계) | API 규칙 | — |
+| 5-f | Section 7-7 (상태 관리 구조) | 코딩 컨벤션 > 상태 관리 패턴 | — |
 | 6 | Section 8 (Screen Map & UI Specs) | 프로젝트 구조 참고 | — |
 | 7 | Section 9 (Competitive Differentiation) | — | 경쟁 포지셔닝 |
 | 8 | Section 10 (Monetization Strategy) | — | 수익 모델 |
 | 9 | Section 12 (Assumptions & Constraints) | 제약사항 | — |
 | 10 | Section 15 (Success Metrics) | — | 성공 지표 |
+
+> **참고**: Section 7-2 (시스템 구조도), 7-8 (기능-테이블-API 매핑), 7-9 (자체 점검 결과)는 CLAUDE.md에 요약하지 않는다. PRD 참조 섹션에서 원문 경로로 안내한다.
 
 - 각 섹션은 `##` 헤딩 기준으로 구분한다. 해당 헤딩부터 다음 동급 헤딩 직전까지를 읽는다.
 - PRD에 해당 섹션이 없으면 기록해두고, 생성할 문서에서 해당 항목에 `[PRD에 미포함 — 수동 작성 필요]`로 표시한다.
@@ -59,6 +66,12 @@
 - PRD Section 7-1에서 추출.
 - 레이어별 기술 선택과 선택 근거를 정리한다.
 - 형식: 레이어명 — 기술명 (선택 근거)
+
+**설계 원칙**
+- PRD Section 7-4에서 추출.
+- 번호 목록으로 3~6개 원칙을 나열한다.
+- 각 원칙은 **굵은 키워드** + 한 줄 설명 형식.
+- PRD 7-4가 없으면 `[PRD에 미포함 — 수동 작성 필요]`로 표시한다.
 
 **프로젝트 구조**
 - project-init CLAUDE.md의 "표준 폴더 구조" 기반.
@@ -113,6 +126,21 @@
 **제약사항**
 - PRD Section 12에서 추출.
 - 비즈니스 가정, 외부 서비스 의존성, 기술적 제약을 요약한다.
+
+**PRD 참조**
+- CLAUDE.md에 요약하지 않은 상세 정보를 PRD 원문에서 조회할 수 있도록 안내한다.
+- 반드시 PRD 파일의 **물리적 경로**를 포함한다.
+- 형식:
+  ```markdown
+  ## PRD 참조
+  - **PRD 원문**: `C:\Users\lsy\app-idea-lab\ideas\adopted\NNN-아이디어명-prd.md`
+  - 시스템 구조도: Section 7-2
+  - 기능-테이블-API 매핑: Section 7-8
+  - 상세 DB 스키마 (CREATE TABLE): Section 7-5
+  - 화면 UI 명세: Section 8
+  - 수용 기준(AC): Section 5
+  ```
+- `NNN-아이디어명` 부분은 1단계에서 파싱한 인자와 실제 발견된 PRD 파일명을 사용한다.
 
 ### 4단계: KNOWLEDGE.md 생성
 - 파일 경로: `C:\Users\lsy\[프로젝트명]\KNOWLEDGE.md`
@@ -170,6 +198,7 @@
 📄 CLAUDE.md 섹션:
    - 프로젝트 개요
    - 기술 스택
+   - 설계 원칙
    - 프로젝트 구조
    - 워크플로우
    - 코딩 컨벤션 (네이밍/컴포넌트/상태관리/에러)
@@ -181,6 +210,7 @@
    - Tooling
    - Safety (절대 규칙)
    - 제약사항
+   - PRD 참조
 
 📄 KNOWLEDGE.md 섹션:
    - 비즈니스 컨텍스트

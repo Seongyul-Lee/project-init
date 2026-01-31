@@ -1,7 +1,7 @@
 # Project Init
 
 ## 목적
-app-idia-lab에서 채택(adopted)된 PRD 문서를 기반으로, React Native + Supabase 프로젝트를 자동 생성하고 초기화하는 워크플로우 도구.
+app-idea-lab에서 채택(adopted)된 PRD 문서를 기반으로, React Native + Supabase 프로젝트를 자동 생성하고 초기화하는 워크플로우 도구.
 
 ## 프로젝트 역할
 이 프로젝트는 **코드 개발을 하지 않는다.** PRD 기반 프로젝트 초기화 자동화 스킬만 제공한다.
@@ -13,8 +13,8 @@ app-idia-lab에서 채택(adopted)된 PRD 문서를 기반으로, React Native +
 ```
 
 ## 경로 상수
-- **app-idia-lab 경로**: `C:\Users\lsy\app-idia-lab`
-- **PRD 파일 위치**: `C:\Users\lsy\app-idia-lab\ideas\adopted\NNN-*-prd.md`
+- **app-idea-lab 경로**: `C:\Users\lsy\app-idea-lab`
+- **PRD 파일 위치**: `C:\Users\lsy\app-idea-lab\ideas\adopted\NNN-*-prd.md`
 - **프로젝트 생성 기본 경로**: `C:\Users\lsy\`
 - **커맨드 템플릿 경로**: `C:\Users\lsy\project-init\templates\commands\`
 
@@ -197,6 +197,11 @@ init-docs 스킬이 새 프로젝트에 생성하는 CLAUDE.md의 구조. 각 �
 ← PRD Section 7-1에서 추출.
 레이어별(프론트엔드/상태관리/로컬저장소/백엔드/인증/결제/분석/빌드) 기술 선택과 선택 근거.
 
+## 설계 원칙
+← PRD Section 7-4 (핵심 설계 원칙)에서 추출.
+번호 목록으로 3~6개 원칙을 나열. 각 원칙은 한 줄로 핵심만 서술.
+개발 의사결정 시 판단 기준으로 활용.
+
 ## 프로젝트 구조
 ← 표준 폴더 구조 + PRD Section 5, 8 기반으로 기능별 폴더 확장.
 실제 생성된 폴더 트리를 기록.
@@ -332,6 +337,10 @@ Zustand 스토어 목록, 각 스토어의 역할과 주요 상태 필드.
 ## 제약사항
 ← PRD Section 12에서 추출.
 비즈니스 가정, 외부 의존성, 기술적 제약.
+
+## PRD 참조
+← init-docs가 PRD 파일의 물리적 경로와 주요 섹션 안내를 자동 기입.
+CLAUDE.md에 요약하지 않은 상세 정보를 원문에서 조회할 때 사용.
 ```
 
 ---
