@@ -132,6 +132,7 @@ PRD Section 7-1에 아래 기술이 명시된 경우에만 추가 설치한다.
 | Kakao OAuth | `@react-native-seoul/kakao-login` | — | dev build 필요 |
 | Google OAuth | `@react-native-google-signin/google-signin` | — | Expo config plugin 내장. dev build 필요 |
 | Apple Auth | `expo-apple-authentication` | — | iOS 전용 |
+| Naver OAuth | `@react-native-seoul/naver-login` | — | dev build 필요 |
 
 ### 알림
 
@@ -151,6 +152,7 @@ PRD Section 7-1에 아래 기술이 명시된 경우에만 추가 설치한다.
 | PRD 기술명 | npm 패키지명 | 함께 설치할 피어 | 비고 |
 |---|---|---|---|
 | In-App Purchase | `react-native-iap` | `react-native-nitro-modules` | dev build 필요. Expo config plugin 내장 |
+| RevenueCat | `react-native-purchases` | — | IAP 래퍼. dev build 필요 |
 
 ### 차트 / 시각화
 
